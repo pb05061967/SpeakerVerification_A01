@@ -470,18 +470,15 @@
             resultDescription.textContent = "La voce non raggiunge il livello minimo di somiglianza. L'accesso o l'identità viene rifiutata.";
         }
 
-       // Aggiorna Grafico
+      // Aggiorna Grafico
     vectorChart.data.datasets[0].data = refVector.slice(0, 30);
     vectorChart.data.datasets[1].data = trialVector.slice(0, 30);
     vectorChart.update();
 
     // Aggiorna Anteprima Numerica Vettore
-    document.getElementById('vectorPreview').textContent = 
-`Vettore Riferimento (primi 10 valori):
-[${refVector.slice(0, 10).map(n => n.toFixed(4)).join(", ")} ...]
-
-Vettore Test (primi 10 valori):
-[${trialVector.slice(0, 10).map(n => n.toFixed(4)).join(", ")} ...]`;
+    const refText = "Vettore Riferimento (primi 10 valori):\n[" + refVector.slice(0, 10).map(n => n.toFixed(4)).join(", ") + " ...]";
+    const trialText = "Vettore Test (primi 10 valori):\n[" + trialVector.slice(0, 10).map(n => n.toFixed(4)).join(", ") + " ...]";
+    document.getElementById('vectorPreview').textContent = refText + "\n\n" + trialText;
 });
 </script>
 
